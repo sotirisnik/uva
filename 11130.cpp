@@ -20,8 +20,8 @@ int main( ) {
             break;
         }
         
-        double vx = (double)velocity * (double)cos( (double)angle*(double)PI/180.0 );//(double)velocity / (double)( 1.0 + tan(angle)*tan(angle)*PI/180 );
-        double vy = (double)velocity * (double)sin( (double)angle*(double)PI/180.0 );//sqrt( velocity*velocity - vx*vx );
+        double vx = (double)velocity * (double)cos( (double)angle*(double)PI/180.0 );
+        double vy = (double)velocity * (double)sin( (double)angle*(double)PI/180.0 );
         
         double accelx = (double)vx / (double)seconds;
         double accely = (double)vy / (double)seconds;
