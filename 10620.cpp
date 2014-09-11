@@ -11,7 +11,7 @@ int S, x, y, dx, dy;
 bool is_white( int S, int x, int y ) {
 
     if ( x % S == 0 || y % S == 0 ) {
-        ///return ( false );
+        return ( false );
     }
 
     x /= S;
