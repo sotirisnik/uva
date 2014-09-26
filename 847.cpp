@@ -8,28 +8,28 @@
 using namespace std;
 
 int n;
-map < pair<int,bool> ,bool> memo;
+map <int ,bool> memo;
 
-bool best( int p, bool turn ) {
+bool best( int p ) {
 
     if ( p >= n ) {
-        memo[ make_pair(p,turn) ] = false;
+        memo[ p ] = false;
         return ( false );
     }
     
-    if ( memo.find( make_pair(p,turn) ) != memo.end() ) {
-        return ( memo[ make_pair(p,turn) ] );
+    if ( memo.find( p ) != memo.end() ) {
+        return ( memo[ p ] );
     }
     
     bool Best = false;
     
     for ( int i = 2; i <= 9; ++i ) {
-        if ( !best( p * i, !turn ) ) {
-            return ( memo[ make_pair(p,turn) ] = true );
+        if ( !best( p * i ) ) {
+            return ( memo[ p ] = true );
         }
     }
     
-    return ( memo[ make_pair(p,turn) ] = Best );
+    return ( memo[ p ] = Best );
 
 }
 
@@ -37,7 +37,7 @@ int main( ) {
     
     while ( scanf( "%d", &n ) != EOF ) {
         memo.clear();
-        if ( best( 1, true ) ) {
+        if ( best( 1 ) ) {
             printf( "Stan wins.\n" );
         }else {
             printf( "Ollie wins.\n" );
