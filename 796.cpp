@@ -27,20 +27,20 @@ void dfs( int u ) {
      for ( list<int>::iterator pos = adj[u].begin(); pos != adj[u].end(); ++pos ) {
          if ( dfs_num[ *pos ] == DFS_WHITE ) {
 	   
-	     parent[*pos] = u;
-	   
-	     dfs( *pos );
+             parent[*pos] = u;
+           
+             dfs( *pos );
+             
+             if ( dfs_low[*pos] > dfs_num[u] ) {
+                 s.insert( make_pair( min(u,*pos), max(u,*pos) ) );
+             }
+             
+             dfs_low[u] = min( dfs_low[u], dfs_low[*pos] );
 	     
-	     if ( dfs_low[*pos] > dfs_num[u] ) {
-	         s.insert( make_pair( min(u,*pos), max(u,*pos) ) );
-	     }
-	     
-	     dfs_low[u] = min( dfs_low[u], dfs_low[*pos] );
-	     
-	 }else if ( *pos != parent[u] ) {
-	     dfs_low[u] = min( dfs_low[u], dfs_num[*pos] );
-	 }
-     }
+         }else if ( *pos != parent[u] ) {
+             dfs_low[u] = min( dfs_low[u], dfs_num[*pos] );
+         }
+    }
        
 }
 
